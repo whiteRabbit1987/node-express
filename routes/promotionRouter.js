@@ -1,46 +1,46 @@
 const express = require('express');
-const campsiteRouter = express.Router();
+const promotionRouter = express.Router();
 
-campsiteRouter.route('/')
+promotionRouter.route('/')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
 .get((req, res) => {
-    res.end('Will send all the campsites to you');
+    res.end('Will send all the promotions to you');
 })
 .post((req, res) => {
-    res.end(`Will add the campsite: ${req.body.name} 
+    res.end(`Will add the promotion: ${req.body.name} 
         with description: ${req.body.description}`);
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites');
+    res.end('PUT operation not supported on /promotions');
 })
 .delete((req, res) => {
-    res.end('Deleting all campsites');
+    res.end('Deleting all promotions');
 });
 
-campsiteRouter.route('/:campsiteId')
+promotionRouter.route('/:promotionId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
 .get((req, res) => {
-    res.end(`Will send campsite with id: ${req.params.campsiteId}`);
+    res.end(`Will send promotion with id: ${req.params.promotionId}`);
 })
 .post((req, res) => {
     res.statusCode = 403;
     res.end('POST not supported');
 })
 .put((req, res) => {
-    res.end(`Updating the campsite with new name: ${req.body.name}
+    res.end(`Updating the promotion with new name: ${req.body.name}
         and description: ${req.body.description}`);
 })
 .delete((req, res) => {
-    res.end(`Deleting campsite with id: ${req.params.campsiteId}`);
+    res.end(`Deleting promotion with id: ${req.params.promotionId}`);
 });
 
-module.exports = campsiteRouter;
+module.exports = promotionRouter;
